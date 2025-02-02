@@ -2,6 +2,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 
 
 const app = express();
@@ -10,7 +12,7 @@ app.use(cors());
 
 // Connect to MongoDB (adjust the connection string as needed)
 mongoose
-  .connect("mongodb+srv://karthikraja007c:karthikraja007c@cluster0.qgkli.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+  .connect(process.env.MONGO, {
   })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
